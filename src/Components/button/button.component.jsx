@@ -2,7 +2,7 @@ import React from "react";
 import "./button.styles.scss";
 
 const BUTTON_TYPE_CLASSES = {
-  goolge: "google",
+  google: "google-sign-in",
   inverted: "inverted",
 };
 const Button = ({ children, buttonType, ...otherProps }) => {
