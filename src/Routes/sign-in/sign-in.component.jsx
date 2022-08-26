@@ -1,8 +1,9 @@
 import { async } from "@firebase/util";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "../../Components/button/button.component";
 import FormInput from "../../Components/form-input/form-input.component";
+import { UserContext } from "../../context/user.context";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -20,25 +21,31 @@ const SignIn = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
+  // const { setCurrentUser } = useContext(UserContext);
+
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
   };
+
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
+    // const { user } = await signInWithGooglePopup();
+    // await createUserDocumentFromAuth(user);
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
+      const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
-      console.log(response);
+      // setCurrentUser(user);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
@@ -51,9 +58,6 @@ const SignIn = () => {
         default:
           console.log("Something went wrong", error.message);
       }
-      // if (error.code === "auth/email-already-in-use") {
-      //   alert("Cannot sign up, email already in use");
-      // }
     }
   };
 
