@@ -82,3 +82,26 @@ export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);
+
+// export const createProductDocumentFromJson = async (product) => {
+//   if (!product) return;
+//   const proudctDocRef = doc(db, "proudcts", product.id);
+//   const proudctSnapShot = await getDoc(proudctDocRef); //allows us to see whether data exists and allows us to access the data
+//   //   console.log(await userAuth);
+//   //   console.log(userSnapShot.exists()); //check if data exists in db
+//   if (!proudctSnapShot.exists()) {
+//     const { name, imageUrl, price } = product;
+//     const createdAt = new Date();
+//     try {
+//       await setDoc(proudctDocRef, {
+//         name,
+//         imageUrl,
+//         price,
+//         createdAt,
+//       });
+//     } catch (error) {
+//       console.log("Error creating the user", error.message);
+//     }
+//   }
+//   return proudctDocRef;
+// };
