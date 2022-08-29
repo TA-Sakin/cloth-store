@@ -9,11 +9,6 @@ import { signOutUser } from "../../utils/firebase/fireabse.utils";
 import "./navigation.styles.scss";
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
-  // const { setCurrentUser } = useContext(UserContext);
-  // const handleSignOut = async () => {
-  //   await signOutUser;
-  //   setCurrentUser(null);
-  // };
   const { isCartOpen } = useContext(CartContext);
   return (
     <Fragment>
