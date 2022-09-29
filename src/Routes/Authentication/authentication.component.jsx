@@ -7,7 +7,7 @@
 //   signInWithGoogleRedirect,
 // } from "../../utils/firebase/fireabse.utils";
 
-import SignIn from "../sign-in/sign-in.component";
+import SignIn from "../sign-in/sign-in-form.component";
 import SignUp from "../sign-up/sign-up.component";
 import "./authentication.styles.scss";
 
